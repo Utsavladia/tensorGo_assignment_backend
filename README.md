@@ -17,7 +17,7 @@ To set up and run the backend server on your local machine, follow these steps:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/feedback-backend.git
+git clone https://github.com/Utsavladia/tensorGo_assignment_backend
 cd feedback-backend
 ```
 ### 2. Install Dependencies
