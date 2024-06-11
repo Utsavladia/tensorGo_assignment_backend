@@ -1,6 +1,8 @@
 const express = require("express");
 const session = require("express-session");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const feedbackRoutes = require("./routes/feedback");
 const cors = require("cors");
 const { OAuth2Client } = require("google-auth-library");
 
@@ -23,6 +25,16 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
+
+app.use("/api", feedbackRoutes);
 
 app.post("/auth/google", async (req, res) => {
   const { token } = req.body;
